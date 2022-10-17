@@ -34,7 +34,7 @@ public class Student1 {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("\nWrong Usier ID / Password");
+			System.out.println("Wrong Usier ID Password");
 		}
 		
 		
@@ -95,10 +95,8 @@ public class Student1 {
 	public void student() {
 		while(true) {
 		System.out.println("\n____________Welcome to Student Section_____________\n\n");
-		System.out.println("Please Select Below Option\n\nPress 1 for New Student Registration \npress 2 "
-				+ "Student Login ");
-		
-		System.out.println("Press 3 for go back");
+		System.out.println("Please Select Below Option\n\n Press 1 for New Student Registration \n press 2 "
+				+ "Student Login \n");
 		
 		String choise = scan.next();
 		Student1 std = new Student1();
@@ -131,20 +129,12 @@ public class Student1 {
 					e.printStackTrace();
 				}
 			}
+			//give exam 
+			//see Score
+			
+			
 			
 			break;
-		
-		case "3":
-			
-			FirstPage fpg = new FirstPage();
-			fpg.firstPage();
-			
-			break;
-			
-		default :
-			
-			System.err.println("Wrong input : ");
-			
 		}
 		
 		

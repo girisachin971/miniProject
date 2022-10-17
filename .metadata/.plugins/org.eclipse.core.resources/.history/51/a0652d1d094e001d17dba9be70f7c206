@@ -12,9 +12,9 @@ public class FirstPage {
 		
 		System.out.println("Please Select below option : \n\nPress '1' for Student \nPress '2' Admin");
 		
-		System.out.println("Enter the Exit for close the program\n");
+		 ;
 		
-		switch(scan.next().toLowerCase()) {
+		switch(scan.next()) {
 		
 		case "1":
 			

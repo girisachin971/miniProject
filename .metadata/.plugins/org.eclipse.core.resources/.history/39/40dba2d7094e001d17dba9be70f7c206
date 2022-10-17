@@ -34,7 +34,7 @@ public class Student1 {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("\nWrong Usier ID / Password");
+			System.out.println("Wrong Usier ID Password");
 		}
 		
 		

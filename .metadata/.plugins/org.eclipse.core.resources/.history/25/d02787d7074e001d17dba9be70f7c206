@@ -34,7 +34,7 @@ public class Student1 {
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			System.err.println("\nWrong Usier ID / Password");
+			System.out.println("Wrong Usier ID Password");
 		}
 		
 		
@@ -95,8 +95,8 @@ public class Student1 {
 	public void student() {
 		while(true) {
 		System.out.println("\n____________Welcome to Student Section_____________\n\n");
-		System.out.println("Please Select Below Option\n\nPress 1 for New Student Registration \npress 2 "
-				+ "Student Login ");
+		System.out.println("Please Select Below Option\n\n Press 1 for New Student Registration \n press 2 "
+				+ "Student Login \n");
 		
 		System.out.println("Press 3 for go back");
 		
@@ -143,7 +143,7 @@ public class Student1 {
 			
 		default :
 			
-			System.err.println("Wrong input : ");
+			System.out.println("Wrong input : ");
 			
 		}
 		
