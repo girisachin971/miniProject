@@ -38,9 +38,12 @@ public class DataBaseCreater {
 			
 			Connection con =DriverManager.getConnection("jdbc:mysql://localhost/","root","Sachin@321");
 
-			String query = "create database College";
+			String query = "create database test1";
 			Statement stm = con.createStatement();
+			
 			stm.execute(query);
+			
+
 			System.out.println("College Database Created Successfully");
 			
 			}catch(Exception e) {

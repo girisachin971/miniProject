@@ -20,7 +20,7 @@ public class Exam {
 		Statement stm;
 		try {
 			stm = con.createStatement();
-			ResultSet res = stm.executeQuery("SELECT * FROM questions ORDER BY RAND()");
+			ResultSet res = stm.executeQuery("SELECT * FROM college.questions ORDER BY RAND()");
 			
 			System.out.println("          \n\n________*** BEST OF LUCK ***________ \n\n");
 			

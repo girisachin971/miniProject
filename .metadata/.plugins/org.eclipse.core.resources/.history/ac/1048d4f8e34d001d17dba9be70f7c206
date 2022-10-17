@@ -31,23 +31,26 @@ public class DataBaseCreater {
 	}
 	
 	// Note Create DataBase in your localhost with Name College
-	public static void database() {
+	public static String database() {
 		try {
 			
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			Connection con =DriverManager.getConnection("jdbc:mysql://localhost/","root","Sachin@321");
 
-			String query = "create database College";
+			String query = "create database test1";
 			Statement stm = con.createStatement();
-			stm.execute(query);
-			System.out.println("College Database Created Successfully");
 			
+			stm.execute(query);
+			
+
+			System.out.println("College Database Created Successfully");
+			return "test1";
 			}catch(Exception e) {
 				
 				System.out.println("College Database Allready Exist in DataBase");
 			}
-		
+		return null;
 		
 	}
 	
@@ -104,11 +107,11 @@ public class DataBaseCreater {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		database();
+		String adata = database();
 		
-		createQuestionTable();
-		createRegisterAdminTable();
-		createStudentTable();
+//		createQuestionTable();
+//		createRegisterAdminTable();
+//		createStudentTable();
 
 	}
 
