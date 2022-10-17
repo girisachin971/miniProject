@@ -24,9 +24,8 @@ public class FirstPage {
 			
 			break;
 		case "2":
-			AdminLogin admin=new AdminLogin();
-		
-			admin.admin();
+			
+			
 			//Admin Section
 			break;
 		
