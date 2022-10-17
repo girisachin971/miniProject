@@ -1,8 +1,10 @@
 package com.project;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class DataBaseCreater {
 	
@@ -29,6 +31,28 @@ public class DataBaseCreater {
 	}
 	
 	// Note Create DataBase in your localhost with Name College
+	public static void database() {
+		try {
+			
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con =DriverManager.getConnection("jdbc:mysql://localhost/","root","Sachin@321");
+
+			String query = "create database test1";
+			Statement stm = con.createStatement();
+			
+			stm.execute(query);
+			
+
+			System.out.println("College Database Created Successfully");
+			
+			}catch(Exception e) {
+				
+				System.out.println("College Database Allready Exist in DataBase");
+			}
+		
+		
+	}
 	
 	public static void createQuestionTable() {
 		try {
@@ -82,6 +106,8 @@ public class DataBaseCreater {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		database();
 		
 		createQuestionTable();
 		createRegisterAdminTable();
