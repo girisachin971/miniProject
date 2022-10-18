@@ -98,9 +98,8 @@ public class Student1 {
 				return id;	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.err.println("Student Allready Registered");
+				System.out.println("Student Not Registered yet Please Try again");
 				student();
-				
 			}
 			
 			return 0;

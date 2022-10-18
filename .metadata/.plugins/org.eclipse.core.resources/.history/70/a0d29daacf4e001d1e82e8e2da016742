@@ -61,10 +61,9 @@ public class AdminLogin {
 		}
 		else
 		{
-			System.err.println("\nInvalid Username or Password");
+			System.out.println("\nLogin UnSuccessful....Try again");
 			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 
-			loginAdmin();
 		}
 		return flag;
 		

@@ -52,21 +52,7 @@ public class Student1 {
 			System.out.println("Please Enter Your Last Name");
 			String last_name  = scan.next();
 			System.out.println("Please Enter Your Phone Number");
-			
-			
-			
 			long phone  = scan.nextLong();
-			String phone1 = String.valueOf(phone);
-			
-			if (phone1.length()<10) {
-				System.err.println("Enter correct mobile number");
-				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-
-				registerStudent();
-				
-				
-			}
-			
 			
 			try {
 				PreparedStatement stm = conne.prepareStatement("insert into student values(null,?,?,null,null,null,?)");
@@ -98,9 +84,8 @@ public class Student1 {
 				return id;	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				System.err.println("Student Allready Registered");
+				System.out.println("Student Not Registered yet Please Try again");
 				student();
-				
 			}
 			
 			return 0;

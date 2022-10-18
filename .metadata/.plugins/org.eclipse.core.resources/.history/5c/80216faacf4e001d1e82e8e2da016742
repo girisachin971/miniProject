@@ -100,7 +100,6 @@ public class Student1 {
 				// TODO Auto-generated catch block
 				System.err.println("Student Allready Registered");
 				student();
-				
 			}
 			
 			return 0;

@@ -96,14 +96,7 @@ public class AdminAccessControl {
 		System.out.println("Enter Student id to modify record");
 		int id=sc.nextInt();
 		
-		boolean flag1 = checkId(id);
-		if (flag1) {
-			
-			System.err.println("record not found");
-			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			modifyStudentData();
-		}
-		
+//		checkId(id);
 		System.out.println("select column name to modify ");
 		
 		System.out.println("\n1.First_name\n2.Last_Name\n3.Mobile No\n4.Score\n5.Grade\n6.Go Back");
@@ -153,26 +146,25 @@ public class AdminAccessControl {
 			{
 			System.out.println("record modified successfully");
 			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			LoggedAdmin logA = new LoggedAdmin();
-			logA.loggedIn();
+
 			}
 			else
 			{
 				System.err.println("record not found");
 				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-				
+
 			}
 			
 		} catch (SQLException e) {
 			
 			System.err.println("Record not found");
 			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
-			
+
 			
 			
 		}
 		}
-		public boolean checkId(int id)
+		public void checkId(int id)
 		{
 			try {
 				PreparedStatement  stmt=conn.prepareStatement("select id from student where id=?");
@@ -182,9 +174,13 @@ public class AdminAccessControl {
 				ResultSet rs=stmt.executeQuery();
 				while(rs.next())
 				{
-					return false;
+					modifyStudentData();
 				}
-				return true;
+				System.err.println("record not found");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+				LoggedAdmin log=new LoggedAdmin();
+				log.loggedIn();
 				
 			} catch (SQLException e) {
 				
@@ -194,7 +190,7 @@ public class AdminAccessControl {
 				
 			}
 			
-			return false;
+			
 		}
 		
 		
