@@ -2,9 +2,12 @@ package com.project;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Scanner;
+
+import com.mysql.cj.protocol.Resultset;
 
 public class AdminAccessControl {
 	
@@ -23,10 +26,12 @@ public class AdminAccessControl {
 			if(rowsAffected>0)
 			{
 			System.out.println("record deleted successfully");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			}
 			else
 			{
-				System.out.println("record not found");
+				System.err.println("record not found");
 			}
 			Statement stmt1=conn.createStatement();
 			int rowsAffected1=stmt1.executeUpdate("drop table t"+id);
@@ -35,7 +40,9 @@ public class AdminAccessControl {
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+//			e.printStackTrace();
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 		}
 				
 	}
@@ -67,14 +74,19 @@ public class AdminAccessControl {
 			if(rowsAffected>0)
 			{
 			System.out.println("question inserted successfully");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			}
 			else
 			{
-				System.out.println("question not inserted");
+				System.err.println("question not inserted");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.err.println("question not inserted");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 		}
 		
 		
@@ -83,8 +95,45 @@ public class AdminAccessControl {
 	{
 		System.out.println("Enter Student id to modify record");
 		int id=sc.nextInt();
-		System.out.println("Enter column name which you want to modify ");
+		
+//		checkId(id);
+		System.out.println("select column name to modify ");
+		
+		System.out.println("\n1.First_name\n2.Last_Name\n3.Mobile No\n4.Score\n5.Grade\n6.Go Back");
 		String modify=sc.next();
+		switch(modify)
+		{
+		case "1":
+			editData("First_name",id);
+			break;
+		case "2":
+			editData("Last_Name",id);
+			break;
+		case "3":
+			editData("Mobile_no",id);
+			break;
+		case "4":
+			editData("Score",id);
+			break;
+		case "5":
+			editData("Grade",id);
+			break;
+		case "6":
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+			LoggedAdmin adm = new LoggedAdmin();
+			adm.loggedIn();
+
+			
+			break;
+		default:
+				System.err.println("record not found");
+				modifyStudentData();
+				break;
+		}
+	}
+		public void editData(String modify,int id)
+		{
 		System.out.println("Enter new value ");
 		String newValue=sc.next();
 		try {
@@ -96,18 +145,55 @@ public class AdminAccessControl {
 			if(rowsAffected>0)
 			{
 			System.out.println("record modified successfully");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			}
 			else
 			{
-				System.out.println("record not found");
+				System.err.println("record not found");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			}
 			
 		} catch (SQLException e) {
 			
-			e.printStackTrace();
+			System.err.println("Record not found");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+			
+			
+		}
+		}
+		public void checkId(int id)
+		{
+			try {
+				PreparedStatement  stmt=conn.prepareStatement("select id from student where id=?");
+																	//from student where id='"+id+"'"
+				
+				stmt.setInt(1, id);
+				ResultSet rs=stmt.executeQuery();
+				while(rs.next())
+				{
+					modifyStudentData();
+				}
+				System.err.println("record not found");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+				LoggedAdmin log=new LoggedAdmin();
+				log.loggedIn();
+				
+			} catch (SQLException e) {
+				
+				System.err.println("Record not found");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+				
+				
+			}
+			
 			
 		}
 		
-	}
+		
+	
 
 }

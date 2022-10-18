@@ -23,7 +23,7 @@ public class LogedStudent {
 			String query = "SELECT * FROM student where ID ='" +id +"'";
 			ResultSet res = stm.executeQuery(query);
 			res.next();
-			System.out.println("Hello :) " + res.getString(2));
+			System.out.println("Hello-----" + res.getString(2));
 			
 			try {
 		
@@ -32,10 +32,11 @@ public class LogedStudent {
 			
 			
 			else {
+				System.out.println("\n\nPlease Select below option :");
 				
-				System.out.println("\n\nPress 1 for give Test \nPress 2 for watch your preaves test Score");
+				System.out.println("\n1.Give Test \n2.Previous Test Score\n3.Logout");
 				
-				System.out.println("Press L for Log Out : ");
+				
 				LogedStudent log = new LogedStudent();
 				switch(scan.next().toUpperCase()) {
 				case "1":
@@ -51,12 +52,18 @@ public class LogedStudent {
 					System.out.print("\n\nName : " + res.getString(2));
 					
 					System.out.println(" " + res.getString(3)+"\n");
-					System.out.println("____Score__   ___Grade___");
+					System.out.println("\n Previous Test Scores.");
+					System.out.println("---------------------------------------------------");
+
+					System.out.println("****Marks Obtained******Grade******");
+					System.out.println("---------------------------------------------------");
+
 					while(rset.next()) {
 						
 						
-					System.out.println("     " + rset.getString(1)+" 		 " + rset.getString(2));
+					System.out.println("           " + rset.getString(1)+" 	    	 " + rset.getString(2));
 					
+					System.out.println("---------------------------------------------------");
 					}
 					System.out.println();
 					stm4.close();
@@ -64,8 +71,9 @@ public class LogedStudent {
 					log.logedStudent(id);
 					
 					
-				case "L":
+				case "3":
 					System.out.println("You Have Successfully Loged Out ):");
+					System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 					FirstPage fp = new FirstPage();
 					fp.firstPage();
 					
@@ -74,6 +82,12 @@ public class LogedStudent {
 				default:
 					
 					System.err.println("Wrong Input");
+					System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+					logedStudent(id);
+					
+					
+					
 				}
 				
 				
@@ -81,8 +95,9 @@ public class LogedStudent {
 			}
 			
 			}catch(Exception e) {
+				System.out.println("\n\nPlease Select below option :");
 				
-				System.out.println("Press 1 for give the test\n press 'L' for Log Out.'");
+				System.out.println("\n1.Give Test \n2.Logout");
 				
 				
 				
@@ -104,6 +119,7 @@ public class LogedStudent {
 					
 				default:
 					System.err.println("Wrong Input");
+					logedStudent(id);
 					
 				}
 				
@@ -140,7 +156,10 @@ public class LogedStudent {
 			String grade = grd.checkGarade(score);
 			
 			if (grade.equals("D")) {
-				System.err.println("\n______SORRY you are Faild_____");
+				
+				System.err.println("\n*********SORRY you are Faild*********");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 				
 			}else {
 			System.out.println("you the Class : " + grade);

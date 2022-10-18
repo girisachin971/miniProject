@@ -8,11 +8,8 @@ import java.sql.Statement;
 
 public class DataBaseCreater {
 	
-	JDBC_Connection con = new JDBC_Connection();
-	
+	JDBC_Connection con = new JDBC_Connection();	
 	public void passQuery(String query) {
-		
-		
 		PreparedStatement stm3;
 		try {
 			Connection conne = con.getConnection();
@@ -26,8 +23,6 @@ public class DataBaseCreater {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	// Note Create DataBase in your localhost with Name College
@@ -91,13 +86,9 @@ public class DataBaseCreater {
 		data.passQuery(query);
 		
 		System.out.println("Student Table Table Created Successfully");
-		}catch(Exception e) {
-			
+		}catch(Exception e) {	
 			System.out.println("Student Table Table Allready Exist in DataBase");
-		}
-		
-		
-		
+		}	
 	}
 	
 
@@ -105,7 +96,6 @@ public class DataBaseCreater {
 		// TODO Auto-generated method stub
 		
 		database();
-		
 		createQuestionTable();
 		createRegisterAdminTable();
 		createStudentTable();

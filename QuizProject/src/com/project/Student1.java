@@ -16,7 +16,7 @@ public class Student1 {
 	
 	public boolean loginStudent(String id) {
 
-		System.out.println("Please Enter Your PassWord");
+		System.out.println("Please Enter Your Password");
 		String pass = scan.next();
 		
 		try {
@@ -46,7 +46,7 @@ public class Student1 {
 	
 	public int registerStudent() {
 		
-		
+
 			System.out.println("Please Enter Your First Name");
 			String first_name  = scan.next();
 			System.out.println("Please Enter Your Last Name");
@@ -66,7 +66,7 @@ public class Student1 {
 				stm.close();
 				
 				Statement stm1 = conne.createStatement();
-				System.out.println(phone);
+				
 				String query = "SELECT ID FROM STUDENT WHERE Mobile_No ='" + phone +"'";
 				ResultSet res = stm1.executeQuery(query);
 				res.next();
@@ -84,7 +84,8 @@ public class Student1 {
 				return id;	
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Student Not Registered yet Please Try again");
+				student();
 			}
 			
 			return 0;
@@ -93,32 +94,37 @@ public class Student1 {
 	
 		
 	public void student() {
+		
 		while(true) {
-		System.out.println("\n____________Welcome to Student Section_____________\n\n");
-		System.out.println("Please Select Below Option\n\nPress 1 for New Student Registration \npress 2 "
-				+ "Student Login ");
-		
-		System.out.println("Press 3 for go back");
-		
-		String choise = scan.next();
+		System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+		System.out.println("\n*********************Welcome to Student Section*********************\n\n");
+		System.out.println("Please Select Below Option\n\n1.Student Registration \n2.Student Login\n3.Go back ");		
+		String choice = scan.next();
 		Student1 std = new Student1();
 		
-		switch(choise) {
+		switch(choice) {
 		
 		case "1":
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			int id = std.registerStudent();
-			System.out.println("Please Note Your ID is :" + id+ " \nPassword is your Rigisted Mobile Number ");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("\\nYou have successfully Registered. ");
+			System.out.println("\n\nPlease Note Your ID :" + id+ " \n\n\nPassword is your Registered Mobile Number ");
 			
-			System.out.println("Now You Can Login");
+			System.out.println("You Can Login Now");
 			break;
 			
 			
 		case "2":
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			//student login
 			System.out.println("Please Enter Your ID : ");
 			String id1 = scan.next();
 			if (std.loginStudent(id1)) {
-				System.out.println("You Have loged In Successfully\n\n");
+				System.out.println("You Have loged In Successfully\n");
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
 				
 				LogedStudent log = new  LogedStudent();
 				log.logedStudent(id1);
@@ -135,14 +141,16 @@ public class Student1 {
 			break;
 		
 		case "3":
-			
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			FirstPage fpg = new FirstPage();
 			fpg.firstPage();
 			
 			break;
 			
 		default :
-			
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			System.err.println("Wrong input : ");
 			
 		}

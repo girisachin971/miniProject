@@ -20,9 +20,11 @@ public class Exam {
 		Statement stm;
 		try {
 			stm = con.createStatement();
-			ResultSet res = stm.executeQuery("SELECT * FROM questions ORDER BY RAND()");
+			ResultSet res = stm.executeQuery("SELECT * FROM questions ORDER BY RAND() limit 10");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 			
-			System.out.println("          \n\n________*** BEST OF LUCK ***________ \n\n");
+			System.out.println("          \n\n********************* BEST OF LUCK *********************  \n\n");
 			
 			
 			
@@ -47,15 +49,19 @@ public class Exam {
 				
 				
 					
-					System.out.println("Please Salect the Correct Option : ");
+					System.out.println("Please Select the Correct Option : ");
 					String ans = scan.next().toUpperCase();
+
 					if(ans.equals(res.getString(6))) score++;
 					
 					if (str.contains(ans)) break;
 					
-					System.err.println("Wrong option Sallected \n ");
-				
+					System.err.println("Wrong option Selected \n ");
+					System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 				}
+				System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 				q++;
 				
 				

@@ -7,12 +7,12 @@ public class FirstPage {
 	
 	public void firstPage() {
 		while(true) {
-		System.out.println("      \n\n__________WELCOME TO SKNSITS__________\n\n");
+		System.out.println("      \n\n**************************WELCOME TO SKNSITS**************************\n\n");
 		
 		
-		System.out.println("Please Select below option : \n\nPress '1' for Student \nPress '2' Admin");
+		System.out.println("Please Select below option : \n\n1.Student \n2.Admin\n3.Exit");
 		
-		System.out.println("Enter the Exit for close the program\n");
+		
 		
 		switch(scan.next().toLowerCase()) {
 		
@@ -29,13 +29,19 @@ public class FirstPage {
 			admin.admin();
 			//Admin Section
 			break;
-		case "exit":
+		case "3":
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+			
+			System.err.println("\n*******************************Thank you for visiting us*******************************\nyou have exited Successfully");
 			
 			System.exit(0);
 			
 		default:
 			
 			System.err.println("Wrong Input ): ");
+			System.out.println("\n\n------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
 		
 		
 		}
